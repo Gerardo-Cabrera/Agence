@@ -118,24 +118,6 @@ class Consultor extends Model {
     	return $data;
     }
 
-    public function getComision($data) {
-    	foreach ($data as $key => $value) {
-    		foreach ($value['meses'] as $clave => $valor) {
-    			$comisionMes = 0;
-    			foreach ($valor as $i => $dato) {
-    				if (isset($dato->valor)) {
-    					$comisionFactura = (($dato->valor - (($dato->valor * $dato->total_imp_inc) / 100)) * 
-    									  	 $dato->comissao_cn) / 100;
-						$comisionMes += $comisionFactura;
-    					$data[$key]['meses'][$clave]['comisionMes'] = $comisionMes;
-    				}
-    			}
-    		}
-    	}
-
-    	return $data;
-    }
-
     public function getConsultor($data) {
     	foreach ($data as $key => $value) {
     		$consultor = DB::table('cao_usuario')->select('no_usuario')->where('co_usuario', $key)->get();
