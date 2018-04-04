@@ -67,7 +67,6 @@ class Consultor extends Model {
 		    									 ->leftJoin('cao_usuario', 'cao_os.co_usuario', 
 		    									 			'cao_usuario.co_usuario')
 		    									 ->where('cao_os.co_usuario', $value)
-		    									 // ->where('cao_fatura.co_os', 291)
 		    									 ->whereMonth('cao_fatura.data_emissao', $i)
 		    									 ->get()->toArray();
 				$dataConsultores[$value]['meses'][$monthName] = $infoMes;
